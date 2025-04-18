@@ -92,6 +92,7 @@ export function useCalculatedColumns<R, SR>({
           idx: 0,
           level: 0,
           frozen,
+          rightFrozen: rawColumn.rightFrozen ?? false,
           width: rawColumn.width ?? defaultWidth,
           minWidth: rawColumn.minWidth ?? defaultMinWidth,
           maxWidth: rawColumn.maxWidth ?? defaultMaxWidth,

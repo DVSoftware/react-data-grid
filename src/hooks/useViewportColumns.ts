@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 
 import { getColSpan } from '../utils';
 import type { CalculatedColumn, Maybe } from '../types';
+import { cellRightFrozenClassname } from '../style/cell';
 
 interface ViewportColumnsArgs<R, SR> {
   columns: readonly CalculatedColumn<R, SR>[];
@@ -107,6 +108,13 @@ export function useViewportColumns<R, SR>({
 
       if (colIdx < startIdx && !column.frozen) continue;
       viewportColumns.push(column);
+    }
+
+    const rightFrozenColumn = columns.find((column) => column.rightFrozen);
+
+    console.log('rightFrozenColumn', rightFrozenColumn, viewportColumns);
+    if (rightFrozenColumn && !viewportColumns.find((column) => column.rightFrozen)) {
+      viewportColumns.push({ ...rightFrozenColumn, cellClass: cellRightFrozenClassname });
     }
 
     return viewportColumns;

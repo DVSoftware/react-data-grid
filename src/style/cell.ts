@@ -45,3 +45,18 @@ export const cellFrozen = css`
 `;
 
 export const cellFrozenClassname = `rdg-cell-frozen ${cellFrozen}`;
+
+export const cellRightFrozen = css`
+  @layer rdg.Cell {
+    position: sticky;
+    right: 0;
+    /* Should have a higher value than 0 to show up above unfrozen cells */
+    z-index: 2;
+    border-inline-start: 1px solid var(--rdg-border-color);
+    border-inline-end: none;
+    box-shadow: var(--rdg-cell-right-frozen-box-shadow);
+    margin-left: -1px;
+  }
+`;
+
+export const cellRightFrozenClassname = `rdg-cell-right-frozen ${cellRightFrozen}`;
